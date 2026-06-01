@@ -28,7 +28,10 @@ const rest = new REST({ version: '10' }).setToken('MTUwNDQ3OTU4MjI2OTczNDk4Mg.Gu
 
 client.once('ready', () => {
     console.log('✅ Bot is online in DND modus!');
-    client.user.setActivity('/commands', { type: 2 });
+    client.user.setPresence({
+        activities: [{ name: '/commands', type: 2 }],
+        status: 'dnd',
+    });
 });
 
 client.on('interactionCreate', async (interaction) => {
